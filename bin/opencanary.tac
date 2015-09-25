@@ -18,12 +18,13 @@ from opencanary.modules.ntp import CanaryNtp
 from opencanary.modules.tftp import CanaryTftp
 from opencanary.modules.vnc import CanaryVNC
 from opencanary.modules.sip import CanarySIP
+from opencanary.modules.arpwatch import CanaryArpwatch
 
 #from opencanary.modules.example0 import CanaryExample0
 #from opencanary.modules.example1 import CanaryExample1
 
 MODULES = [Telnet, CanaryHTTP, CanaryFTP, CanarySSH, HTTPProxy, CanaryMySQL,
-           MSSQL, CanaryVNC, CanaryTftp, CanaryNtp, CanarySIP]
+           MSSQL, CanaryVNC, CanaryTftp, CanaryNtp, CanarySIP, CanaryArpwatch]
            #CanaryExample0, CanaryExample1]
 try:
     #Module needs RDP, but the rest of OpenCanary doesn't
@@ -85,7 +86,7 @@ for module in MODULES:
             loadmod.startYourEngines()
             logMsg("Start module %s" % (module.NAME))
             continue
-    except:
+    except Exception as e:
         pass
 
     try:

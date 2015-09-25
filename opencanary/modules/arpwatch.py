@@ -8,7 +8,7 @@ arp_re = re.compile('(?P<type>[a-z ]*)\s+(?P<ip>([0-9]{1,3}\.){3}([0-9]{1,3}))\s
 class ArpLogWatcher(FileSystemWatcher):
     def __init__(self, logger=None, logFile=None):
         self.logger = logger
-        FileSystemWatcher.__init__(self, filename=logFile)
+        FileSystemWatcher.__init__(self, fileName=logFile)
 
     def handleLines(self, lines=[]):
         for line in lines:
@@ -31,7 +31,7 @@ class ArpLogWatcher(FileSystemWatcher):
 class CanaryArpwatch(CanaryService):
     NAME = 'arpwatch'
 
-    def __init__(self.config=None, logger=None):
+    def __init__(self, config=None, logger=None):
         CanaryService.__init__(self, config=config, logger=logger)
         self.audit_file = config.getVal('arpwatch.logfile', default='/var/log/arpwatch.log')
         self.config = config
