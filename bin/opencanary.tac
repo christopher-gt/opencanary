@@ -46,7 +46,7 @@ for module in CanaryServices:
             loadmod.startYourEngines()
             logMsg("Start module %s" % (module.NAME))
             continue
-    except Exception as e:
+    except:
         pass
 
     try:
